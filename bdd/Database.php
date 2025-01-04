@@ -1,11 +1,11 @@
 <?php 
 
 class Database{
-    private $host= "localhost";
-    private $dbname = "todolist";
+    private $host= 'localhost';
+    private $dbname = 'todolist';
     private $user = "root";
-    private $password = "";
-    private $charset = "utf8bm4";
+    private $password = '';
+    private $charset = 'utf8mb4';
     public $pdo;
 
     public function __construct(){
@@ -16,7 +16,7 @@ class Database{
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION).
             $this->pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         } catch (PDOException $e){
-            throw("Il y'a eux une erreur lors de la connexion avec la base de données :". $e->getMessage());
+            die("Il y'a eux une erreur lors de la connexion avec la base de données :" . $e->getMessage());
         }
     }
 }

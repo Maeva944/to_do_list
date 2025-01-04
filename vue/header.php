@@ -8,8 +8,8 @@
 <header>
     <h1>To do list de ...</h1>
     <nav>
-        <a href="#">Login</a>
-        <a href="#">Sign up</a>
+        <a href="login.php">Login</a>
+        <a href="register.php">Sign up</a>
     </nav>
 </header>
 </html>
