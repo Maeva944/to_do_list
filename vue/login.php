@@ -19,7 +19,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         $user = $stmp->fetch();
 
         if ($user && password_verify($password, $user ['password'])){
-
+            $_SESSION['username'] = $username;
+            header("Location : dashboard.php");
+            exit();
+        } else {
+            $error = "Nom d'utilisateur ou le mot de passe est incorrect. Veuilliez réessayer.";
         }
     }
 }
