@@ -1,33 +1,7 @@
 <?php 
-session_start();
 require_once('header.php');
-
+require_once('../controller/UserController.php');
 require_once('../bdd/Database.php');
-
-$database = new Database;
-$pdo = $database->pdo;
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $username = htmlspecialchars($_POST['username']);
-    $password = htmlspecialchars($_POST['password']);
-
-    if (empty($username) || empty($password)) {
-        $error = "Veuillez remplir tous les champs.";
-    }else {
-        $stmp = $pdo->prepare('SELECT * FROM users WHERE username = :username');
-        $stmp->execute(['username' => $username]);
-        $user = $stmp->fetch();
-
-        if ($user && password_verify($password, $user ['password'])){
-            $_SESSION['username'] = $username;
-            header("Location : dashboard.php");
-            exit();
-        } else {
-            $error = "Nom d'utilisateur ou le mot de passe est incorrect. Veuilliez réessayer.";
-        }
-    }
-}
-
 ?>
 
 <body>
